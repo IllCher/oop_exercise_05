@@ -15,8 +15,6 @@ public:
     queue(): size_(0) {
         tmp_ = new_node(value_type());
     }
-    queue (const queue&) = delete;
-    queue& operator= (const queue& q) = delete;
     void push(const value_type& value) {
         it_insert(tmp_, value);
     }
