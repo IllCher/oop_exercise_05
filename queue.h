@@ -53,21 +53,22 @@ public:
     }
 
    iterator insert(iterator pos, const value_type& value) {
-        it_insert(pos.item_, value);
-        return iterator(pos.item_->prev, this);
+        it_insert(pos.item_.lock(), value);
+        return iterator(pos.item_.lock()->prev, this);
     }
 
     iterator erase(iterator pos) {
         iterator res = pos;
         ++res;
-        it_rmv(pos.item_);
+        it_rmv(pos.item_.lock());
         return res;
     }
 
 private:
     struct queue_node {
         std::shared_ptr<queue_node> next;
-        std::shared_ptr<queue_node> prev;
+        std::weak_ptr<queue_node> prev;
+        //std::shared_ptr<queue_node> prev;
         value_type value;
 
         queue_node(const value_type& val):
@@ -84,7 +85,7 @@ private:
         using pointer = queue::value_type*;
         using iterator_category = std::forward_iterator_tag;
 
-        iterator(std::shared_ptr<queue_node> item, queue const * lst): item_(item), queue_(lst)
+        iterator(std::weak_ptr<queue_node> item, queue const * lst): item_(item), queue_(lst)
         {}
 
         ~iterator() = default;
@@ -103,11 +104,11 @@ private:
         iterator& operator++ () {
             if (queue_->size_ == 0)
                 return *this;
-            if (queue_->size_ == 1 && item_ == queue_->tmp_->next) {
+            if (queue_->size_ == 1 && item_.lock() == queue_->tmp_->next) {
                 item_ = queue_->tmp_;
                 return *this;
             }
-            item_ = item_->next;
+            item_ = item_.lock()->next;
             return *this;
         }
         iterator& operator-- () {
@@ -117,7 +118,7 @@ private:
             return *this;
         }
         reference operator*() {
-            return item_->value;
+            return item_.lock()->value;
         }
 
         pointer operator->() {
@@ -125,14 +126,14 @@ private:
         }
 
         bool operator!= (const iterator& example) {
-            return item_ != example.item_;
+            return item_.lock() != example.item_.lock();
         }
 
         bool operator== (const iterator& example) {
-            return item_ == example.item_;
+            return item_.lock() == example.item_.lock();
         }
     private:
-        std::shared_ptr<queue_node> item_;
+        std::weak_ptr<queue_node> item_;
         queue const *queue_;
         friend class queue;
     };
@@ -153,17 +154,17 @@ private:
             return ;
         }
         std::shared_ptr<queue_node> new_elem = new_node(value);
-        if (item == tmp_->next) {
+        /*if (item.lock() == (tmp_->next)) {
             new_elem->next = tmp_->next;
             new_elem->prev = tmp_;
             tmp_->next = new_elem;
             item->prev = new_elem;
             size_++;
             return;
-        }
+        }*/
         new_elem->next = item;
         new_elem->prev = item->prev;
-        item->prev->next = new_elem;
+        item->prev.lock()->next = new_elem;
         item->prev = new_elem;
         size_++;
     }
@@ -183,12 +184,12 @@ private:
                     tmp_->next = item->next;
                 }
                 item->next->prev = item->prev;
-                item->prev->next = item->next;
+                item->prev.lock()->next = item->next;
                 size_--;
                 return ;
             }
             item->next->prev = item->prev;
-            item->prev->next = item->next;
+            item->prev.lock()->next = item->next;
         }
         size_--;
     }

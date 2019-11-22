@@ -12,7 +12,9 @@ void add(queue<TOctagon<int>>& q) {
     std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
     TOctagon<int> oct = TOctagon<int>(a,b,c,d,e,f,g,h);
     if (q.size() == 0 && id == 0) {
-        q.push(oct);
+        auto it = q.begin();
+        std::advance(it, id);
+        q.insert(it, oct);
         return;
     }
     if (id >= q.size()) {
