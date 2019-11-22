@@ -11,10 +11,11 @@ void add(queue<TOctagon<int>>& q) {
     std::pair<int,int> a,b,c,d,e,f,g,h;
     std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
     TOctagon<int> oct = TOctagon<int>(a,b,c,d,e,f,g,h);
-    if (id == 0) {
+    if (q.size() == 0 && id == 0) {
         q.push(oct);
         return;
-    } else if (id >= q.size()) {
+    }
+    if (id >= q.size()) {
         std::cout << "no such a figure\n";
         return;
     } else {
@@ -64,8 +65,12 @@ int main() {
     std::string cmd;
     while (std::cin >> cmd) {
         try {
-            if (cmd == "psh") {
+            if (cmd == "push") {
                 psh(q);
+            } else if (cmd == "pop") {
+                q.pop();
+            } else if (cmd == "add") {
+                add(q);
             } else if (cmd == "rmv") {
                 rmv(q);
             } else if (cmd == "prt") {

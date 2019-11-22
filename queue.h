@@ -15,9 +15,6 @@ public:
     queue(): size_(0) {
         tmp_ = new_node(value_type());
     }
-    ~queue() {
-        tmp_->next = nullptr;
-    }
     queue (const queue&) = delete;
     queue& operator= (const queue& q) = delete;
     void push(const value_type& value) {
@@ -130,6 +127,10 @@ private:
         bool operator!= (const iterator& example) {
             return item_ != example.item_;
         }
+
+        bool operator== (const iterator& example) {
+            return item_ == example.item_;
+        }
     private:
         std::shared_ptr<queue_node> item_;
         queue const *queue_;
@@ -152,6 +153,14 @@ private:
             return ;
         }
         std::shared_ptr<queue_node> new_elem = new_node(value);
+        if (item == tmp_->next) {
+            new_elem->next = tmp_->next;
+            new_elem->prev = tmp_;
+            tmp_->next = new_elem;
+            item->prev = new_elem;
+            size_++;
+            return;
+        }
         new_elem->next = item;
         new_elem->prev = item->prev;
         item->prev->next = new_elem;
@@ -173,8 +182,9 @@ private:
                     item->next->prev = tmp_;
                     tmp_->next = item->next;
                 }
-                item->next = nullptr;
-                item->prev = nullptr;
+                item->next->prev = item->prev;
+                item->prev->next = item->next;
+                size_--;
                 return ;
             }
             item->next->prev = item->prev;

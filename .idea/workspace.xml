@@ -18,6 +18,7 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/oop_exercise_05.exe.stackdump" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/oop_exercise_05.exe.stackdump" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/queue.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report.doc" beforeDir="false" afterPath="$PROJECT_DIR$/report.doc" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +36,7 @@
   <component name="ProjectId" id="1TxjhnYdmmNxACRs9KXJRGCL2ea" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -50,7 +51,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="oop_exercise_05" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="oop_exercise_05" TARGET_NAME="oop_exercise_05" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="oop_exercise_05" RUN_TARGET_NAME="oop_exercise_05">
+    <configuration name="oop_exercise_05" type="CMakeRunConfiguration" factoryName="Application" activateToolWindowBeforeRun="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="oop_exercise_05" TARGET_NAME="oop_exercise_05" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="oop_exercise_05" RUN_TARGET_NAME="oop_exercise_05">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -67,7 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574408764210</updated>
       <workItem from="1574408770569" duration="1252000" />
-      <workItem from="1574416382158" duration="7397000" />
+      <workItem from="1574416382158" duration="19684000" />
     </task>
     <servers />
   </component>
@@ -86,5 +87,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/queue.h</url>
+          <line>148</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>7</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
