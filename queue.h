@@ -109,6 +109,17 @@ private:
             item_ = item_.lock()->next;
             return *this;
         }
+        const iterator operator++ (int) {
+            if (lst_->size_ == 0)
+                return *this;
+            if (lst_->size_ == 1 && item_.lock() == lst_->tmp_->next) {
+                item_ = lst_->tmp_;
+                return *this;
+            }
+            std::shared_ptr<lst_node> res = item_.lock();
+            item_ = item_.lock()->next;
+            return iterator(res);
+        }
         iterator& operator-- () {
             if (lst_->size_ == 0)
                 return *this;
