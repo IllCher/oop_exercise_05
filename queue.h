@@ -173,11 +173,12 @@ private:
                     item->next->prev = tmp_;
                     tmp_->next = item->next;
                 }
-                item->next->prev = item->prev;
-                item->prev->next = item->next;
                 item->next = nullptr;
                 item->prev = nullptr;
+                return ;
             }
+            item->next->prev = item->prev;
+            item->prev->next = item->next;
         }
         size_--;
     }

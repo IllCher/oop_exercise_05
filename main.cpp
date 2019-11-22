@@ -6,36 +6,38 @@
 #include <utility>
 #include <algorithm>
 void add(queue<TOctagon<int>>& q) {
+    int id;
+    std::cin >> id;
     std::pair<int,int> a,b,c,d,e,f,g,h;
     std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
     TOctagon<int> oct = TOctagon<int>(a,b,c,d,e,f,g,h);
-    int id;
-    std::cin >> id;
-    if (q.size() == 0) {
+    if (id == 0) {
         q.push(oct);
+        return;
     } else if (id >= q.size()) {
         std::cout << "no such a figure\n";
+        return;
     } else {
-        if (id == 0) {
-            q.push(oct);
-        } else {
-            auto it = q.begin();
-            std::advance(it, id);
-            q.insert(it, oct);
-        }
+        auto it = q.begin();
+        std::advance(it, id);
+        q.insert(it, oct);
     }
+}
+
+void psh(queue<TOctagon<int>>& q) {
+    std::pair<int,int> a,b,c,d,e,f,g,h;
+    std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
+    q.push(TOctagon<int>(a, b, c, d, e, f, g, h));
 }
 void rmv(queue<TOctagon<int>>& q) {
     int id;
     std::cin >> id;
     if (id >= q.size()) {
         std::cout << "no such a figure\n";
-    } else if (id == 0) {
-        q.pop();
     } else {
-            auto it = q.begin();
-            std::advance(it, id);
-            q.erase(it);
+        auto it = q.begin();
+        std::advance(it, id);
+        q.erase(it);
     }
 }
 void prt(queue<TOctagon<int>>& q) {
@@ -62,8 +64,8 @@ int main() {
     std::string cmd;
     while (std::cin >> cmd) {
         try {
-            if (cmd == "add") {
-                add(q);
+            if (cmd == "psh") {
+                psh(q);
             } else if (cmd == "rmv") {
                 rmv(q);
             } else if (cmd == "prt") {
