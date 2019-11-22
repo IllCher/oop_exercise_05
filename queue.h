@@ -125,6 +125,10 @@ private:
         pointer operator->() {
             return &item_->value;
         }
+
+        bool operator!= (const iterator& example) {
+            return item_ != example.item_;
+        }
     private:
         std::shared_ptr<queue_node> item_;
         queue const *queue_;
