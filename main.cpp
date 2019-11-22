@@ -5,6 +5,14 @@
 #include <string>
 #include <utility>
 #include <algorithm>
+void remove(queue<TOctagon<int>>& q) {
+    int id = 0;
+    while (q.size()) {
+        auto it = q.begin();
+        std::advance(it, id);
+        q.erase(it);
+    }
+}
 void add(queue<TOctagon<int>>& q) {
     int id;
     std::cin >> id;
@@ -82,6 +90,7 @@ int main() {
             } else if (cmd == "top") {
                 (q.top()).print();
             } else if (cmd == "ext") {
+                remove(q);
                 return 0;
             } else {
                 std::cout << "wrong input\n";
