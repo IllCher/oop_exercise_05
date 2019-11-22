@@ -164,8 +164,6 @@ private:
         } else if (size_ == 1) {
             tmp_->next = nullptr;
         } else {
-            item->next->prev = item->prev;
-            item->prev->next = item->next;
             if (size_ == 2) {
                 if (item->next == tmp_) {
                     tmp_->next->next = nullptr;
@@ -179,7 +177,6 @@ private:
                 item->prev->next = item->next;
                 item->next = nullptr;
                 item->prev = nullptr;
-                return ;
             }
         }
         size_--;
