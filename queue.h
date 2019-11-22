@@ -18,7 +18,8 @@ public:
     ~queue() {
         tmp_->next = nullptr;
     }
-
+    queue (const queue&) = delete;
+    queue& operator= (const queue& q) = delete;
     void push(const value_type& value) {
         it_insert(tmp_, value);
     }
