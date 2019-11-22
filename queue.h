@@ -63,13 +63,13 @@ public:
     }
 
 private:
-    struct queue_node {
-        std::shared_ptr<queue_node> next;
-        std::weak_ptr<queue_node> prev;
-        //std::shared_ptr<queue_node> prev;
+    struct lst_node {
+        std::shared_ptr<lst_node> next;
+        std::weak_ptr<lst_node> prev;
+        //std::shared_ptr<lst_node> prev;
         value_type value;
 
-        queue_node(const value_type& val):
+        lst_node(const value_type& val):
                 value(val), next(nullptr)
         {}
     };
@@ -83,34 +83,34 @@ private:
         using pointer = queue::value_type*;
         using iterator_category = std::forward_iterator_tag;
 
-        iterator(std::weak_ptr<queue_node> item, queue const * lst): item_(item), queue_(lst)
+        iterator(std::weak_ptr<lst_node> item, queue const * lst): item_(item), lst_(lst)
         {}
 
         ~iterator() = default;
 
         iterator(const iterator& it) {
             item_ = it.item_;
-            queue_ = it.queue_;
+            lst_ = it.lst_;
         }
 
         iterator& operator= (const iterator& it) {
             item_ = it.item_;
-            queue_ = it.queue_;
+            lst_ = it.lst_;
             return *this;
         }
 
         iterator& operator++ () {
-            if (queue_->size_ == 0)
+            if (lst_->size_ == 0)
                 return *this;
-            if (queue_->size_ == 1 && item_.lock() == queue_->tmp_->next) {
-                item_ = queue_->tmp_;
+            if (lst_->size_ == 1 && item_.lock() == lst_->tmp_->next) {
+                item_ = lst_->tmp_;
                 return *this;
             }
             item_ = item_.lock()->next;
             return *this;
         }
         iterator& operator-- () {
-            if (queue_->size_ == 0)
+            if (lst_->size_ == 0)
                 return *this;
             item_ = item_->prev;
             return *this;
@@ -131,27 +131,27 @@ private:
             return item_.lock() == example.item_.lock();
         }
     private:
-        std::weak_ptr<queue_node> item_;
-        queue const *queue_;
+        std::weak_ptr<lst_node> item_;
+        queue const *lst_;
         friend class queue;
     };
-    std::shared_ptr<queue_node> tmp_;
+    std::shared_ptr<lst_node> tmp_;
     ull size_;
-    std::shared_ptr<queue_node> new_node(const value_type& value) {
-        return std::make_shared<queue_node>(value);
+    std::shared_ptr<lst_node> new_node(const value_type& value) {
+        return std::make_shared<lst_node>(value);
     }
     void empty_insert(const value_type& value) {
         tmp_->next = new_node(value);
         tmp_->next->prev = tmp_;
         tmp_->prev = tmp_->next;
     }
-    void it_insert(std::shared_ptr<queue_node> item, const value_type& value) {
+    void it_insert(std::shared_ptr<lst_node> item, const value_type& value) {
         if (size_ == 0) {
             empty_insert(value);
             size_++;
             return ;
         }
-        std::shared_ptr<queue_node> new_elem = new_node(value);
+        std::shared_ptr<lst_node> new_elem = new_node(value);
         /*if (item.lock() == (tmp_->next)) {
             new_elem->next = tmp_->next;
             new_elem->prev = tmp_;
@@ -166,7 +166,7 @@ private:
         item->prev = new_elem;
         size_++;
     }
-    void it_rmv(std::shared_ptr<queue_node> item) {
+    void it_rmv(std::shared_ptr<lst_node> item) {
         if (size_ == 0) {
             std::cout << "nothing to remove\n";
         } else if (size_ == 1) {
