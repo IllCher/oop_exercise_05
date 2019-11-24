@@ -90,7 +90,8 @@ int main() {
             } else if (cmd == "top") {
                 (q.top()).print();
             } else if (cmd == "ext") {
-                //remove(q);
+                while(!q.empty())
+                    q.pop();
                 return 0;
             } else {
                 std::cout << "wrong input\n";
