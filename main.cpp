@@ -68,7 +68,7 @@ void check(queue<TOctagon<int> >& q) {
     double area;
     std::cin >> area;
     int res = std::count_if(q.begin(), q.end(),[area](const TOctagon<int>& oct) -> bool {return oct.area() < area;} );
-std::cout << res << "\n";
+    std::cout << res << "\n";
 }
 int main() {
     queue<TOctagon<int>> q;

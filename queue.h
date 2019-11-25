@@ -154,6 +154,7 @@ private:
         tmp_->next = new_node(value);
         tmp_->next->prev = tmp_;
         tmp_->prev = tmp_->next;
+        tmp_->next->next = tmp_;
     }
     void it_insert(std::shared_ptr<lst_node> item, const value_type& value) {
         if (size_ == 0) {
@@ -162,12 +163,11 @@ private:
             return ;
         }
         std::shared_ptr<lst_node> new_elem = new_node(value);
-        if (item == (tmp_->next)) {
+        if (item == tmp_->next) {
             new_elem->next = tmp_->next;
             new_elem->prev = tmp_;
             tmp_->next = new_elem;
             item->prev = new_elem;
-            item->next = tmp_;
             size_++;
             return;
         }
