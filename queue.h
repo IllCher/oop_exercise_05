@@ -66,7 +66,6 @@ private:
     struct lst_node {
         std::shared_ptr<lst_node> next;
         std::weak_ptr<lst_node> prev;
-        //std::shared_ptr<lst_node> prev;
         value_type value;
 
         lst_node(const value_type& val):
@@ -155,6 +154,7 @@ private:
         tmp_->next = new_node(value);
         tmp_->next->prev = tmp_;
         tmp_->prev = tmp_->next;
+        tmp_->next->next = tmp_;
     }
     void it_insert(std::shared_ptr<lst_node> item, const value_type& value) {
         if (size_ == 0) {
@@ -163,14 +163,14 @@ private:
             return ;
         }
         std::shared_ptr<lst_node> new_elem = new_node(value);
-        /*if (item.lock() == (tmp_->next)) {
+        if (item == tmp_->next) {
             new_elem->next = tmp_->next;
             new_elem->prev = tmp_;
             tmp_->next = new_elem;
             item->prev = new_elem;
             size_++;
             return;
-        }*/
+        }
         new_elem->next = item;
         new_elem->prev = item->prev;
         item->prev.lock()->next = new_elem;

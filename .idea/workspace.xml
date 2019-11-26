@@ -5,14 +5,25 @@
       <config projectName="oop_exercise_05" targetName="oop_exercise_05" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
-      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Release-WSL" CONFIG_NAME="Release" TOOLCHAIN_NAME="WSL" />
+      <configuration PROFILE_NAME="Debug-MinGW" CONFIG_NAME="Debug" TOOLCHAIN_NAME="MinGW" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c70a9861-63e5-4509-9247-052581d82759" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/oop_exercise_05.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/oop_exercise_05.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/oop_exercise_05.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/oop_exercise_05.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/oop_exercise_05.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/oop_exercise_05.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/oop_exercise_05.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/oop_exercise_05.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/oop_exercise_05.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/oop_exercise_05.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/oop_exercise_05.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-mingw/oop_exercise_05.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-wsl/CMakeFiles/oop_exercise_05.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-wsl/CMakeFiles/oop_exercise_05.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-wsl/oop_exercise_05" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-wsl/oop_exercise_05" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/queue.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,14 +34,16 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release-WSL" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1TxjhnYdmmNxACRs9KXJRGCL2ea" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -44,12 +57,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="oop_exercise_05" type="CMakeRunConfiguration" factoryName="Application" activateToolWindowBeforeRun="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="oop_exercise_05" TARGET_NAME="oop_exercise_05" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="oop_exercise_05" RUN_TARGET_NAME="oop_exercise_05">
+  <component name="RunManager" selected="CMake Application.test">
+    <configuration name="oop_exercise_05" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="oop_exercise_05" TARGET_NAME="oop_exercise_05" CONFIG_NAME="Release-WSL" RUN_TARGET_PROJECT_NAME="oop_exercise_05" RUN_TARGET_NAME="oop_exercise_05">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="oop_exercise_05" TARGET_NAME="oop_exercise_05" CONFIG_NAME="Release-WSL" RUN_TARGET_PROJECT_NAME="oop_exercise_05" RUN_TARGET_NAME="oop_exercise_05">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.test" />
+      <item itemvalue="CMake Application.oop_exercise_05" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -62,8 +84,10 @@
       <option name="presentableId" value="Default" />
       <updated>1574408764210</updated>
       <workItem from="1574408770569" duration="1252000" />
-      <workItem from="1574416382158" duration="26681000" />
-      <workItem from="1574447722427" duration="598000" />
+      <workItem from="1574416382158" duration="26364000" />
+      <workItem from="1574621983675" duration="615000" />
+      <workItem from="1574622618960" duration="1733000" />
+      <workItem from="1574624679888" duration="10739000" />
     </task>
     <servers />
   </component>
@@ -88,8 +112,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>15</line>
-          <option name="timeStamp" value="3" />
+          <line>53</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

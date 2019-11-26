@@ -68,7 +68,7 @@ void check(queue<TOctagon<int> >& q) {
     double area;
     std::cin >> area;
     int res = std::count_if(q.begin(), q.end(),[area](const TOctagon<int>& oct) -> bool {return oct.area() < area;} );
-std::cout << res << "\n";
+    std::cout << res << "\n";
 }
 int main() {
     queue<TOctagon<int>> q;
@@ -90,7 +90,8 @@ int main() {
             } else if (cmd == "top") {
                 (q.top()).print();
             } else if (cmd == "ext") {
-                //remove(q);
+                while(!q.empty())
+                    q.pop();
                 return 0;
             } else {
                 std::cout << "wrong input\n";
