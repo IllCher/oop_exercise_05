@@ -12,7 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c70a9861-63e5-4509-9247-052581d82759" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/queue.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +30,7 @@
   <component name="ProjectId" id="1TxjhnYdmmNxACRs9KXJRGCL2ea" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -62,7 +62,8 @@
       <option name="presentableId" value="Default" />
       <updated>1574408764210</updated>
       <workItem from="1574408770569" duration="1252000" />
-      <workItem from="1574416382158" duration="26364000" />
+      <workItem from="1574416382158" duration="26681000" />
+      <workItem from="1574447722427" duration="598000" />
     </task>
     <servers />
   </component>
