@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/d/Study/Labs2course/oop_exercise_05
+# Install script for directory: /mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/d/Study/Labs2course/oop_exercise_05/cmake-build-release-wsl/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/cmake-build-release-wsl/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

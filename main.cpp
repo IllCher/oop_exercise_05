@@ -40,7 +40,7 @@ void psh(queue<TOctagon<int>>& q) {
     std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
     q.push(TOctagon<int>(a, b, c, d, e, f, g, h));
 }
-void rmv(queue<TOctagon<int>>& q) {
+void rmv(queue<TOctagon<int>>& q) {   
     int id;
     std::cin >> id;
     if (id >= q.size()) {
