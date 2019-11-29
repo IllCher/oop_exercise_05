@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/mnt/d/Study/Labs2course/oop_exercise_05/main.cpp
+/mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/main.cpp
 iostream
 -
 queue.h
-/mnt/d/Study/Labs2course/oop_exercise_05/queue.h
+/mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/queue.h
 octagon.h
-/mnt/d/Study/Labs2course/oop_exercise_05/octagon.h
+/mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/octagon.h
 vertex.h
-/mnt/d/Study/Labs2course/oop_exercise_05/vertex.h
+/mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/vertex.h
 string
 -
 utility
@@ -22,19 +22,19 @@ utility
 algorithm
 -
 
-/mnt/d/Study/Labs2course/oop_exercise_05/octagon.h
+/mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/octagon.h
 utility
 -
 cmath
 -
 
-/mnt/d/Study/Labs2course/oop_exercise_05/queue.h
+/mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/queue.h
 memory
 -
 cstdint
 -
 
-/mnt/d/Study/Labs2course/oop_exercise_05/vertex.h
+/mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/vertex.h
 iostream
 -
 
