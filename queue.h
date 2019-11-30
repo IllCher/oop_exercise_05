@@ -62,7 +62,6 @@ public:
     }
 
     void it_insert(iterator it, const value_type& value) {
-        std::shared_ptr<lst_node> tmp = it.item_.lock();
         if (it == end()) {
             push(value);
             size_++;
@@ -85,7 +84,7 @@ public:
     void it_rmv(iterator it) {
         std::shared_ptr<lst_node> tmp = it.item_.lock();
         if (it == end()) {
-            throw std::logic_error("can't remove on end iterator");
+            throw std::logic_error("can't remove end iterator");
         }
         if (it == begin()) {
             pop();
