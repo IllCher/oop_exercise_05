@@ -93,7 +93,7 @@ public:
         }
         it.item_.lock()->prev.lock()->next = it.item_.lock()->next;
         it.item_.lock()->next->prev = it.item_.lock()->prev;
-        size_++;
+        size_--;
     }
 
 private:
