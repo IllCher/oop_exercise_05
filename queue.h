@@ -83,6 +83,7 @@ public:
         size_++;
     }
     void it_rmv(iterator it) {
+        std::shared_ptr<lst_node> tmp = it.item_.lock();
         if (it == end()) {
             throw std::logic_error("can't remove on end iterator");
         }
@@ -91,8 +92,10 @@ public:
             size_--;
             return ;
         }
-        it.item_.lock()->prev.lock()->next = it.item_.lock()->next;
-        it.item_.lock()->next->prev = it.item_.lock()->prev;
+        std::shared_ptr<lst_node> next_tmp = tmp->next;
+        std::weak_ptr<lst_node> prev_tmp = tmp->prev;
+        prev_tmp.lock()->next = next_tmp;
+        next_tmp->prev = prev_tmp;
         size_--;
     }
 
