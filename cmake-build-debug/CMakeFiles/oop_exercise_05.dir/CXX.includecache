@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/main.cpp
+iostream
+-
+queue.h
+/cygdrive/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/queue.h
+octagon.h
+/cygdrive/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/octagon.h
+vertex.h
+/cygdrive/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/vertex.h
+string
+-
+utility
+-
+algorithm
+-
+
+/cygdrive/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/octagon.h
+utility
+-
+cmath
+-
+
+/cygdrive/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/queue.h
+memory
+-
+cstdint
+-
+
+/cygdrive/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/vertex.h
+iostream
+-
+

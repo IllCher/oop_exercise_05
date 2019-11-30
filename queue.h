@@ -13,23 +13,36 @@ public:
     using reference = value_type&;
 
     queue(): size_(0) {
-        tmp_ = new_node(value_type());
+        tail_ = std::make_shared<lst_node>();
+        head_ = tail_;
     }
+    queue(const queue& q) = delete;
+    queue& operator = (const queue&) = delete;
     void push(const value_type& value) {
-        it_insert(tmp_, value);
+        std::shared_ptr<lst_node> new_elem = new_node(value);
+        if (empty()) {
+            head_ = new_elem;
+            head_->next = tail_;
+            tail_->prev = head_;
+        } else {
+            tail_->prev.lock()->next = new_elem;
+            new_elem->prev = tail_->prev;
+            new_elem->next = tail_;
+            tail_->prev = new_elem;
+        }
     }
 
     void pop() {
-        if (size_ == 0)
+        if (empty())
             throw std::logic_error("empty");
-        it_rmv(tmp_->next);
+        head_ = head_->next;
     }
 
     reference top() {
-        if (size_ == 0) {
+        if (empty()) {
             throw std::logic_error("empty");
         }
-        return tmp_->next->value;
+        return head_->value;
     }
 
     size_type size() {
@@ -37,33 +50,55 @@ public:
     }
 
     bool empty() {
-        return size_ == 0;
+        return head_ == tail_;
     }
 
     iterator begin() {
-        if (size_ == 0)
-            return iterator(tmp_, this);
-        return iterator(tmp_->next, this);
+        return iterator(head_, this);
     }
 
     iterator end() {
-        return iterator(tmp_, this);
+        return iterator(tail_, this);
     }
 
-   iterator insert(iterator pos, const value_type& value) {
-        it_insert(pos.item_.lock(), value);
-        return iterator(pos.item_.lock()->prev, this);
+    void it_insert(iterator it, const value_type& value) {
+        std::shared_ptr<lst_node> tmp = it.item_.lock();
+        if (it == end()) {
+            push(value);
+            size_++;
+            return;
+        }
+        std::shared_ptr<lst_node> new_elem = new_node(value);
+        if (it == begin()) {
+            new_elem->next = head_;
+            head_->prev = new_elem;
+            head_ = new_elem;
+            size_++;
+            return ;
+        }
+        new_elem->prev = it.item_.lock()->prev;
+        it.item_.lock()->prev.lock()->next = new_elem;
+        new_elem->next = it.item_.lock();
+        it.item_.lock()->prev = new_elem;
+        size_++;
     }
-
-    iterator erase(iterator pos) {
-        iterator res = pos;
-        ++res;
-        it_rmv(pos.item_.lock());
-        return res;
+    void it_rmv(iterator it) {
+        if (it == end()) {
+            throw std::logic_error("can't remove on end iterator");
+        }
+        if (it == begin()) {
+            pop();
+            size_--;
+            return ;
+        }
+        it.item_.lock()->prev.lock()->next = it.item_.lock()->next;
+        it.item_.lock()->next->prev = it.item_.lock()->prev;
+        size_++;
     }
 
 private:
     struct lst_node {
+        lst_node() = default;
         std::shared_ptr<lst_node> next;
         std::weak_ptr<lst_node> prev;
         value_type value;
@@ -82,7 +117,7 @@ private:
         using pointer = queue::value_type*;
         using iterator_category = std::forward_iterator_tag;
 
-        iterator(std::weak_ptr<lst_node> item, queue const * lst): item_(item), lst_(lst)
+        iterator(std::shared_ptr<lst_node> item, queue const * lst): item_(item), lst_(lst)
         {}
 
         ~iterator() = default;
@@ -94,36 +129,25 @@ private:
 
         iterator& operator= (const iterator& it) {
             item_ = it.item_;
-            lst_ = it.lst_;
             return *this;
         }
 
         iterator& operator++ () {
-            if (lst_->size_ == 0)
-                return *this;
-            if (lst_->size_ == 1 && item_.lock() == lst_->tmp_->next) {
-                item_ = lst_->tmp_;
-                return *this;
+            std::shared_ptr<lst_node> tmp = item_.lock();
+            if (tmp) {
+                if (tmp->next == nullptr) {
+                    throw std::logic_error("out of bounds");
+                }
+                tmp = tmp->next;
+                item_ = tmp;
+                return  *this;
             }
-            item_ = item_.lock()->next;
-            return *this;
+            throw std::logic_error("smt strange");
         }
-        const iterator operator++ (int) {
-            if (lst_->size_ == 0)
-                return *this;
-            if (lst_->size_ == 1 && item_.lock() == lst_->tmp_->next) {
-                item_ = lst_->tmp_;
-                return *this;
-            }
-            std::shared_ptr<lst_node> res = item_.lock();
-            item_ = item_.lock()->next;
-            return iterator(res);
-        }
-        iterator& operator-- () {
-            if (lst_->size_ == 0)
-                return *this;
-            item_ = item_->prev;
-            return *this;
+        iterator operator++ (int) {
+            iterator res(*this);
+            ++(*this);
+            return res;
         }
         reference operator*() {
             return item_.lock()->value;
@@ -134,7 +158,7 @@ private:
         }
 
         bool operator!= (const iterator& example) {
-            return item_.lock() != example.item_.lock();
+            return !(*this == example);
         }
 
         bool operator== (const iterator& example) {
@@ -145,62 +169,11 @@ private:
         queue const *lst_;
         friend class queue;
     };
-    std::shared_ptr<lst_node> tmp_;
+    std::shared_ptr<lst_node> head_;
+    std::shared_ptr<lst_node> tail_;
     ull size_;
     std::shared_ptr<lst_node> new_node(const value_type& value) {
         return std::make_shared<lst_node>(value);
-    }
-    void empty_insert(const value_type& value) {
-        tmp_->next = new_node(value);
-        tmp_->next->prev = tmp_;
-        tmp_->prev = tmp_->next;
-        tmp_->next->next = tmp_;
-    }
-    void it_insert(std::shared_ptr<lst_node> item, const value_type& value) {
-        if (size_ == 0) {
-            empty_insert(value);
-            size_++;
-            return ;
-        }
-        std::shared_ptr<lst_node> new_elem = new_node(value);
-        if (item == tmp_->next) {
-            new_elem->next = tmp_->next;
-            new_elem->prev = tmp_;
-            tmp_->next = new_elem;
-            item->prev = new_elem;
-            size_++;
-            return;
-        }
-        new_elem->next = item;
-        new_elem->prev = item->prev;
-        item->prev.lock()->next = new_elem;
-        item->prev = new_elem;
-        size_++;
-    }
-    void it_rmv(std::shared_ptr<lst_node> item) {
-        if (size_ == 0) {
-            std::cout << "nothing to remove\n";
-        } else if (size_ == 1) {
-            tmp_->next = nullptr;
-        } else {
-            if (size_ == 2) {
-                if (item->next == tmp_) {
-                    tmp_->next->next = nullptr;
-                    tmp_->prev = tmp_->next;
-                } else {
-                    item->next->next = nullptr;
-                    item->next->prev = tmp_;
-                    tmp_->next = item->next;
-                }
-                item->next->prev = item->prev;
-                item->prev.lock()->next = item->next;
-                size_--;
-                return ;
-            }
-            item->next->prev = item->prev;
-            item->prev.lock()->next = item->next;
-        }
-        size_--;
     }
 };
 

@@ -5,40 +5,26 @@
 #include <string>
 #include <utility>
 #include <algorithm>
-void remove(queue<TOctagon<int>>& q) {
-    int id = 0;
-    while (q.size()) {
-        auto it = q.begin();
-        std::advance(it, id);
-        q.erase(it);
-    }
-}
 void add(queue<TOctagon<int>>& q) {
     int id;
     std::cin >> id;
     std::pair<int,int> a,b,c,d,e,f,g,h;
-    std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
-    TOctagon<int> oct = TOctagon<int>(a,b,c,d,e,f,g,h);
     if (q.size() == 0 && id == 0) {
-        auto it = q.begin();
-        std::advance(it, id);
-        q.insert(it, oct);
+        std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
+        TOctagon<int> oct = TOctagon<int>(a,b,c,d,e,f,g,h);
+        q.it_insert(q.begin(), oct);
         return;
     }
     if (id >= q.size()) {
         std::cout << "no such a figure\n";
         return;
     } else {
+        std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
+        TOctagon<int> oct = TOctagon<int>(a,b,c,d,e,f,g,h);
         auto it = q.begin();
         std::advance(it, id);
-        q.insert(it, oct);
+        q.it_insert(it, oct);
     }
-}
-
-void psh(queue<TOctagon<int>>& q) {
-    std::pair<int,int> a,b,c,d,e,f,g,h;
-    std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
-    q.push(TOctagon<int>(a, b, c, d, e, f, g, h));
 }
 void rmv(queue<TOctagon<int>>& q) {   
     int id;
@@ -48,7 +34,7 @@ void rmv(queue<TOctagon<int>>& q) {
     } else {
         auto it = q.begin();
         std::advance(it, id);
-        q.erase(it);
+        q.it_rmv(it);
     }
 }
 void prt(queue<TOctagon<int>>& q) {
@@ -75,11 +61,7 @@ int main() {
     std::string cmd;
     while (std::cin >> cmd) {
         try {
-            if (cmd == "push") {
-                psh(q);
-            } else if (cmd == "pop") {
-                q.pop();
-            } else if (cmd == "add") {
+            if (cmd == "add") {
                 add(q);
             } else if (cmd == "rmv") {
                 rmv(q);
@@ -88,11 +70,8 @@ int main() {
             } else if (cmd == "check") {
                 check(q);
             } else if (cmd == "top") {
+                std::cout << q.size() << "\n";
                 (q.top()).print();
-            } else if (cmd == "ext") {
-                while(!q.empty())
-                    q.pop();
-                return 0;
             } else {
                 std::cout << "wrong input\n";
                 continue;
