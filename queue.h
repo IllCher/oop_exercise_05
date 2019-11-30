@@ -139,10 +139,11 @@ private:
             if (tmp) {
                 if (tmp->next == nullptr) {
                     throw std::logic_error("out of bounds");
+                } else {
+                    tmp = tmp->next;
+                    item_ = tmp;
+                    return  *this;
                 }
-                tmp = tmp->next;
-                item_ = tmp;
-                return  *this;
             }
             throw std::logic_error("smt strange");
         }
