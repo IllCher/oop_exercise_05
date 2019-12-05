@@ -30,12 +30,14 @@ public:
             new_elem->next = tail_;
             tail_->prev = new_elem;
         }
+        size_++;
     }
 
     void pop() {
         if (empty())
             throw std::logic_error("empty");
         head_ = head_->next;
+        size_--;
     }
 
     reference top() {
@@ -64,7 +66,6 @@ public:
     void it_insert(iterator it, const value_type& value) {
         if (it == end()) {
             push(value);
-            size_++;
             return;
         }
         std::shared_ptr<lst_node> new_elem = new_node(value);
@@ -88,7 +89,6 @@ public:
         }
         if (it == begin()) {
             pop();
-            size_--;
             return ;
         }
         std::shared_ptr<lst_node> next_tmp = tmp->next;

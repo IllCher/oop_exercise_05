@@ -63,8 +63,13 @@ int main() {
         try {
             if (cmd == "add") {
                 add(q);
-            } else if (cmd == "rmv") {
-                rmv(q);
+            } else if (cmd == "push") {
+                std::pair<int,int> a,b,c,d,e,f,g,h;
+                std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
+                TOctagon<int> oct = TOctagon<int>(a,b,c,d,e,f,g,h);
+                q.push(oct);
+            } else if (cmd == "pop") {
+                q.pop();
             } else if (cmd == "prt") {
                 prt(q);
             } else if (cmd == "check") {
