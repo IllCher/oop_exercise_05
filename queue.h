@@ -160,7 +160,7 @@ private:
         }
 
         bool operator!= (const iterator& example) {
-            return *this != example;
+            return !(*this == example);
         }
 
         bool operator== (const iterator& example) {
