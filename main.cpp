@@ -22,7 +22,7 @@ void add(queue<TOctagon<int>>& q) {
         std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
         TOctagon<int> oct = TOctagon<int>(a,b,c,d,e,f,g,h);
         auto it = q.begin();
-        std::advance(it, id);
+        std::next(it, id);
         q.it_insert(it, oct);
     }
 }
@@ -33,7 +33,7 @@ void rmv(queue<TOctagon<int>>& q) {
         std::cout << "no such a figure\n";
     } else {
         auto it = q.begin();
-        std::advance(it, id);
+        std::next(it, id);
         q.it_rmv(it);
     }
 }
