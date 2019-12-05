@@ -70,7 +70,6 @@ int main() {
             } else if (cmd == "check") {
                 check(q);
             } else if (cmd == "top") {
-                std::cout << q.size() << "\n";
                 (q.top()).print();
             } else {
                 std::cout << "wrong input\n";
