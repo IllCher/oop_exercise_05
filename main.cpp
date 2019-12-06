@@ -5,8 +5,9 @@
 #include <string>
 #include <utility>
 #include <algorithm>
+typedef unsigned long long ull;
 void add(queue<TOctagon<int>>& q) {
-    int id;
+    ull id;
     std::cin >> id;
     std::pair<int,int> a,b,c,d,e,f,g,h;
     if (q.size() == 0 && id == 0) {
@@ -27,7 +28,7 @@ void add(queue<TOctagon<int>>& q) {
     }
 }
 void rmv(queue<TOctagon<int>>& q) {
-    int id;
+    ull id;
     std::cin >> id;
     if (id >= q.size()) {
         std::cout << "no such a figure\n";
