@@ -22,18 +22,18 @@ void add(queue<TOctagon<int>>& q) {
         std::cin >> a >> b >> c >> d >> e >> f >> g >> h;
         TOctagon<int> oct = TOctagon<int>(a,b,c,d,e,f,g,h);
         auto it = q.begin();
-        std::next(it, id);
+        std::advance(it, id);
         q.it_insert(it, oct);
     }
 }
 void rmv(queue<TOctagon<int>>& q) {
     int id;
     std::cin >> id;
-    if (id > q.size()) {
+    if (id >= q.size()) {
         std::cout << "no such a figure\n";
     } else {
         auto it = q.begin();
-        std::next(it, id);
+        it = std::next(it, id);
         q.it_rmv(it);
     }
 }
@@ -57,6 +57,7 @@ void check(queue<TOctagon<int> >& q) {
     std::cout << res << "\n";
 }
 int main() {
+    std::cout << "a\n";
     queue<TOctagon<int>> q;
     std::string cmd;
     while (std::cin >> cmd) {

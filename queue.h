@@ -33,6 +33,20 @@ public:
         size_++;
     }
 
+    /*push_tail (const value_type& value) {
+            std::shared_ptr<lst_node> new_elem = new_node(value);
+            if (empty()) {
+                head_ = new_elem;
+                head_->next = tail_;
+                tail_->prev = head_;
+            } else {
+                tail_->prev.lock()->next = new_elem;
+                new_elem->prev = tail_->prev;
+                new_elem->next = tail_;
+                tail_->prev = new_elem;
+            }
+            size_++;
+        }*/
     void pop() {
         if (empty())
             throw std::logic_error("empty");
@@ -64,6 +78,7 @@ public:
     }
 
     void it_insert(iterator it, const value_type& value) {
+        std::shared_ptr it_ptr = it.item_.lock();
         if (it == end()) {
             push(value);
             return;
@@ -76,10 +91,12 @@ public:
             size_++;
             return ;
         }
-        new_elem->prev = it.item_.lock()->prev;
-        it.item_.lock()->prev.lock()->next = new_elem;
-        new_elem->next = it.item_.lock();
-        it.item_.lock()->prev = new_elem;
+        std::shared_ptr <lst_node> ptr_next = it_ptr;
+        std::weak_ptr <lst_node> ptr_prev = it_ptr -> prev;
+        new_elem->prev = ptr_prev;
+        ptr_prev.lock()->next = new_elem;
+        new_elem->next = ptr_next;
+        ptr_next->prev = new_elem;
         size_++;
     }
     void it_rmv(iterator it) {
