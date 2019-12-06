@@ -63,6 +63,8 @@ int main() {
         try {
             if (cmd == "add") {
                 add(q);
+            } else if (cmd == "rmv"){
+                rmv(q);
             } else if (cmd == "push") {
                 std::pair<int,int> a,b,c,d,e,f,g,h;
                 std::cin >> a >> b >> c >> d >> e >> f >> g >> h;

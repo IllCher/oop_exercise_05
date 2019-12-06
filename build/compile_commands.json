@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "/mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/build",
+    "command": "c++  -Ilab5meson@exe -I. -I.. -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -O0 -g -std=c++17 -MD -MQ 'lab5meson@exe/main.cpp.o' -MF 'lab5meson@exe/main.cpp.o.d' -o 'lab5meson@exe/main.cpp.o' -c ../main.cpp",
+    "file": "../main.cpp"
+  }
+]

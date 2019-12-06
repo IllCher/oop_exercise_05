@@ -1,0 +1,14 @@
+Build started at 2019-12-06T15:42:22.827233
+Main binary: /usr/bin/python3
+Python system: Linux
+The Meson build system
+Version: 0.45.1
+Source dir: /mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05
+Build dir: /mnt/c/Users/Ilya/Desktop/Labs2course/oop_exercise_05/build
+Build type: native build
+Project name: lab5
+Native C++ compiler: c++ (gcc 7.4.0 "c++ (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0")
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Build targets in project: 1
+Found ninja-1.8.2 at /usr/bin/ninja

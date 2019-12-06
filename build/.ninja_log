@@ -1,0 +1,5 @@
+# ninja log v5
+1	614	1575636142	build.ninja	3499cfa2cbc1ac4d
+0	2944	1575636145	lab5meson@exe/main.cpp.o	98de2b078d72d763
+2983	3159	1575636146	lab5meson	52f807b34f8f17d3
+2	578	0	meson-install	b07f9da73c706099
