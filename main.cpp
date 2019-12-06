@@ -57,7 +57,6 @@ void check(queue<TOctagon<int> >& q) {
     std::cout << res << "\n";
 }
 int main() {
-    std::cout << "a\n";
     queue<TOctagon<int>> q;
     std::string cmd;
     while (std::cin >> cmd) {
