@@ -15,7 +15,7 @@ void add(queue<TOctagon<int>>& q) {
         q.it_insert(q.begin(), oct);
         return;
     }
-    if (id >= q.size()) {
+    if (id > q.size()) {
         std::cout << "no such a figure\n";
         return;
     } else {
@@ -29,7 +29,7 @@ void add(queue<TOctagon<int>>& q) {
 void rmv(queue<TOctagon<int>>& q) {
     int id;
     std::cin >> id;
-    if (id >= q.size()) {
+    if (id > q.size()) {
         std::cout << "no such a figure\n";
     } else {
         auto it = q.begin();
