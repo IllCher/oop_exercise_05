@@ -26,7 +26,7 @@ void add(queue<TOctagon<int>>& q) {
         q.it_insert(it, oct);
     }
 }
-void rmv(queue<TOctagon<int>>& q) {   
+void rmv(queue<TOctagon<int>>& q) {
     int id;
     std::cin >> id;
     if (id >= q.size()) {
