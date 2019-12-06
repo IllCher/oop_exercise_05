@@ -118,13 +118,13 @@ public:
 private:
     struct lst_node {
         lst_node() = default;
+
+        lst_node(const value_type& val):
+                next(nullptr), value(val)
+        {}
         std::shared_ptr<lst_node> next;
         std::weak_ptr<lst_node> prev;
         value_type value;
-
-        lst_node(const value_type& val):
-                value(val), next(nullptr)
-        {}
     };
 
     class iterator {
